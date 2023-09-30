@@ -7,12 +7,12 @@ export declare class MovieRepository {
         id: number;
         title: string;
         description: string;
-        status: import(".prisma/client").$Enums.Status;
+        status: string;
     }[]>;
     findById(request: GetMovieRequest): Promise<{
         id: number;
         title: string;
         description: string;
-        status: import(".prisma/client").$Enums.Status;
+        status: string;
     }>;
 }

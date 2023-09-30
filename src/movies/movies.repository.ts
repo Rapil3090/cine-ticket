@@ -4,18 +4,17 @@ import { GetMovieRequest } from "./dto/get-movie.request";
 
 @Injectable()
 export class MovieRepository {
-    constructor(private readonly prisma: PrismaService){}
+  constructor(private readonly prisma: PrismaService) {}
 
-    async findAllMovies() {
-        return this.prisma.movie.findMany({});
-    }
+  async findAllMovies() {
+    return this.prisma.movie.findMany({});
+  }
 
-
-    async findById(request: GetMovieRequest) {
-        return this.prisma.movie.findUnique({
-            where: {
-                id: request.id
-            }
-        })
-    }
+  async findById(request: GetMovieRequest) {
+    return this.prisma.movie.findUnique({
+      where: {
+        id: request.id,
+      },
+    });
+  }
 }

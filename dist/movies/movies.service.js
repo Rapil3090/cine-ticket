@@ -12,26 +12,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MoviesService = void 0;
 const common_1 = require("@nestjs/common");
 const movies_repository_1 = require("./movies.repository");
-const client_1 = require("@prisma/client");
 const prisma_service_1 = require("../prisma/prisma.service");
 let MoviesService = class MoviesService {
     constructor(movieRepository, prisma) {
         this.movieRepository = movieRepository;
         this.prisma = prisma;
-        this.movies = [];
     }
     async getMovies() {
         return await this.movieRepository.findAllMovies();
     }
-    async createMovies(title, description) {
-        const movie = await this.prisma.movie.create({
+    async createMovies(request) {
+        return await this.prisma.movie.create({
             data: {
-                title,
-                description,
-                status: client_1.Status.PUBLIC,
+                title: request.title,
+                description: request.description,
+                status: request.status,
             },
         });
-        return movie;
     }
     async getMoviesById(id) {
         return await this.movieRepository.findById({ id });
@@ -41,20 +38,19 @@ let MoviesService = class MoviesService {
             where: { id },
         });
     }
-    async updateMoviesStatus(id, title, description, status) {
-        const movies = await this.getMoviesById(id);
+    async updateMoviesStatus(request) {
+        const movies = await this.getMoviesById(request.id);
         if (!movies) {
-            throw new common_1.NotFoundException('영화가 존재하지 않습니다');
+            throw new common_1.NotFoundException("영화가 존재하지 않습니다");
         }
-        const updatedMovie = await this.prisma.movie.update({
-            where: { id },
+        return await this.prisma.movie.update({
+            where: { id: request.id },
             data: {
-                title,
-                description,
-                status,
+                title: request.title,
+                description: request.description,
+                status: request.status,
             },
         });
-        return updatedMovie;
     }
 };
 exports.MoviesService = MoviesService;

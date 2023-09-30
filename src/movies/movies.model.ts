@@ -1,13 +1,15 @@
-import { Status as PrismaStatus } from '@prisma/client';
+// // import { Status as PrismaStatus } from '@prisma/client';
 
-export enum Status {
-    PUBLIC = 'PUBLIC',
-    PRIVATE = 'PRIVATE',
-}
+// import { Status } from "@prisma/client";
 
-export interface Movie {
-    // id: number;
-    title: string;
-    description: string;
-    status: Status;
-}
+// export enum status {
+//     PUBLIC = 'PUBLIC',
+//     PRIVATE = 'PRIVATE',
+// }
+
+// export interface Movie {
+//     // id: number;
+//     title: string;
+//     description: string;
+//     status: Status;
+// }

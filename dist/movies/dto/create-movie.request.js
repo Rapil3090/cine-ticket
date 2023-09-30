@@ -9,27 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MovieRepository = void 0;
-const common_1 = require("@nestjs/common");
-const prisma_service_1 = require("../prisma/prisma.service");
-let MovieRepository = class MovieRepository {
-    constructor(prisma) {
-        this.prisma = prisma;
-    }
-    async findAllMovies() {
-        return this.prisma.movie.findMany({});
-    }
-    async findById(request) {
-        return this.prisma.movie.findUnique({
-            where: {
-                id: request.id,
-            },
-        });
-    }
-};
-exports.MovieRepository = MovieRepository;
-exports.MovieRepository = MovieRepository = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
-], MovieRepository);
-//# sourceMappingURL=movies.repository.js.map
+exports.CreateMovieRequest = void 0;
+const class_validator_1 = require("class-validator");
+class CreateMovieRequest {
+}
+exports.CreateMovieRequest = CreateMovieRequest;
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreateMovieRequest.prototype, "title", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreateMovieRequest.prototype, "description", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreateMovieRequest.prototype, "status", void 0);
+//# sourceMappingURL=create-movie.request.js.map

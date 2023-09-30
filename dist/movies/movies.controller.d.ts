@@ -1,5 +1,6 @@
-import { MoviesService } from './movies.service';
-import { Status } from '@prisma/client';
+import { MoviesService } from "./movies.service";
+import { CreateMovieRequest } from "./dto/create-movie.request";
+import { UpdateMovieRequest } from "./dto/update-movie.request";
 export declare class MoviesController {
     private moviesService;
     constructor(moviesService: MoviesService);
@@ -7,20 +8,25 @@ export declare class MoviesController {
         id: number;
         title: string;
         description: string;
-        status: import(".prisma/client").$Enums.Status;
+        status: string;
     }[]>;
-    createMovies(title: string, description: string): Promise<{
+    createMovies(request: CreateMovieRequest): Promise<{
         id: number;
         title: string;
         description: string;
-        status: import(".prisma/client").$Enums.Status;
+        status: string;
     }>;
     getMoviesById(id: string): Promise<{
         id: number;
         title: string;
         description: string;
-        status: import(".prisma/client").$Enums.Status;
+        status: string;
     }>;
     deleteMovies(id: string): Promise<void>;
-    updateMoviesStatus(id: number, title: string, description: string, status: Status): Promise<any>;
+    updateMoviesStatus(request: UpdateMovieRequest): Promise<{
+        id: number;
+        title: string;
+        description: string;
+        status: string;
+    }>;
 }

@@ -1,29 +1,34 @@
-import { MovieRepository } from './movies.repository';
-import { Status } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { MovieRepository } from "./movies.repository";
+import { PrismaService } from "src/prisma/prisma.service";
+import { CreateMovieRequest } from "./dto/create-movie.request";
+import { UpdateMovieRequest } from "./dto/update-movie.request";
 export declare class MoviesService {
     private readonly movieRepository;
     private readonly prisma;
     constructor(movieRepository: MovieRepository, prisma: PrismaService);
-    private movies;
     getMovies(): Promise<{
         id: number;
         title: string;
         description: string;
-        status: import(".prisma/client").$Enums.Status;
+        status: string;
     }[]>;
-    createMovies(title: string, description: string): Promise<{
+    createMovies(request: CreateMovieRequest): Promise<{
         id: number;
         title: string;
         description: string;
-        status: import(".prisma/client").$Enums.Status;
+        status: string;
     }>;
     getMoviesById(id: number): Promise<{
         id: number;
         title: string;
         description: string;
-        status: import(".prisma/client").$Enums.Status;
+        status: string;
     }>;
     deleteMovies(id: number): Promise<void>;
-    updateMoviesStatus(id: number, title: string, description: string, status: Status): Promise<any>;
+    updateMoviesStatus(request: UpdateMovieRequest): Promise<{
+        id: number;
+        title: string;
+        description: string;
+        status: string;
+    }>;
 }

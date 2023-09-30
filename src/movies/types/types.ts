@@ -1,7 +1,7 @@
-import { Movie } from "../movies.model";
+// import { Movie } from "../movies.model";
 
-export interface SomeResponseType {
-    success: boolean;
-    message: string; 
-    deletedMovie?: Movie;
-}
+// export interface SomeResponseType {
+//     success: boolean;
+//     message: string; 
+//     deletedMovie?: Movie;
+// }

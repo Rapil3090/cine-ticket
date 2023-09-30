@@ -15,7 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MoviesController = void 0;
 const common_1 = require("@nestjs/common");
 const movies_service_1 = require("./movies.service");
-const client_1 = require("@prisma/client");
+const create_movie_request_1 = require("./dto/create-movie.request");
+const update_movie_request_1 = require("./dto/update-movie.request");
 let MoviesController = class MoviesController {
     constructor(moviesService) {
         this.moviesService = moviesService;
@@ -23,8 +24,8 @@ let MoviesController = class MoviesController {
     async getAllMovies() {
         return this.moviesService.getMovies();
     }
-    createMovies(title, description) {
-        return this.moviesService.createMovies(title, description);
+    createMovies(request) {
+        return this.moviesService.createMovies(request);
     }
     async getMoviesById(id) {
         const numberId = parseInt(id, 10);
@@ -35,8 +36,8 @@ let MoviesController = class MoviesController {
         const numberId = parseInt(id, 10);
         await this.moviesService.deleteMovies(numberId);
     }
-    updateMoviesStatus(id, title, description, status) {
-        return this.moviesService.updateMoviesStatus(id, title, description, status);
+    updateMoviesStatus(request) {
+        return this.moviesService.updateMoviesStatus(request);
     }
 };
 exports.MoviesController = MoviesController;
@@ -49,38 +50,34 @@ __decorate([
 __decorate([
     (0, common_1.Post)(),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
-    __param(0, (0, common_1.Body)('title')),
-    __param(1, (0, common_1.Body)('description')),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [create_movie_request_1.CreateMovieRequest]),
     __metadata("design:returntype", void 0)
 ], MoviesController.prototype, "createMovies", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], MoviesController.prototype, "getMoviesById", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Delete)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], MoviesController.prototype, "deleteMovies", null);
 __decorate([
-    (0, common_1.Patch)('/update/:id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)('title')),
-    __param(2, (0, common_1.Body)('description')),
-    __param(3, (0, common_1.Body)('status')),
+    (0, common_1.Patch)("/update"),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, String, String, String]),
+    __metadata("design:paramtypes", [update_movie_request_1.UpdateMovieRequest]),
     __metadata("design:returntype", void 0)
 ], MoviesController.prototype, "updateMoviesStatus", null);
 exports.MoviesController = MoviesController = __decorate([
-    (0, common_1.Controller)('movies'),
+    (0, common_1.Controller)("movies"),
     __metadata("design:paramtypes", [movies_service_1.MoviesService])
 ], MoviesController);
 //# sourceMappingURL=movies.controller.js.map
