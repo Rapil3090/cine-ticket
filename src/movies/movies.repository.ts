@@ -43,9 +43,9 @@ export class MovieRepository {
         title: request.title,
         description: request.description,
         status: request.status
-      }
+      },
     }
-    )
+    );
   }
 
 
