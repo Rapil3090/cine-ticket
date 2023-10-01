@@ -34,9 +34,9 @@ import { UpdateMovieRequest } from "./dto/update-movie.request";
   
     @Get(":id")
     async getMoviesById(@Param("id") id: string) {
-      const numberId = parseInt(id, 10);
-      const request: GetMovieRequest = { id: numberId };
-      return await this.moviesService.getMoviesById(numberId);
+      const movieId = parseInt(id, 10);
+      const request: GetMovieRequest = { id: movieId };
+      return await this.moviesService.getMoviesById(movieId);
     }
   
     @Delete(":id")

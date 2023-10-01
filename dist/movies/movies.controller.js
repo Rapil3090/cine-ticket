@@ -28,9 +28,9 @@ let MoviesController = class MoviesController {
         return this.moviesService.createMovies(request);
     }
     async getMoviesById(id) {
-        const numberId = parseInt(id, 10);
-        const request = { id: numberId };
-        return await this.moviesService.getMoviesById(numberId);
+        const movieId = parseInt(id, 10);
+        const request = { id: movieId };
+        return await this.moviesService.getMoviesById(movieId);
     }
     async deleteMovies(id) {
         const numberId = parseInt(id, 10);
