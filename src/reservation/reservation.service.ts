@@ -27,10 +27,6 @@ export class ReservationService {
     async updateReservation(request: UpdateReservationRequest) {
         const reservation = await this.getReservationById(request.id);
 
-        if (!reservation) {
-            throw new NotFoundException("예매내역이 없습니다");
-        }
-
         return await this.reservationRepository.updateReservation(request);
     }
 }
