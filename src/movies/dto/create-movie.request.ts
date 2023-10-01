@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsEnum, IsNotEmpty, IsString } from "class-validator";
+import { Status } from "../entity/status";
 
 
 export class CreateMovieRequest {
@@ -10,7 +11,8 @@ export class CreateMovieRequest {
   @IsNotEmpty()
   description: string;
 
-  @IsString()
+//   @IsString()
+  @IsEnum(Status)
   @IsNotEmpty()
-  status: string;
+  status: Status;
 }

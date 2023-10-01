@@ -12,51 +12,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MoviesService = void 0;
 const common_1 = require("@nestjs/common");
 const movies_repository_1 = require("./movies.repository");
-const prisma_service_1 = require("../prisma/prisma.service");
 let MoviesService = class MoviesService {
-    constructor(movieRepository, prisma) {
+    constructor(movieRepository) {
         this.movieRepository = movieRepository;
-        this.prisma = prisma;
     }
     async getMovies() {
         return await this.movieRepository.findAllMovies();
     }
     async createMovies(request) {
-        return await this.prisma.movie.create({
-            data: {
-                title: request.title,
-                description: request.description,
-                status: request.status,
-            },
-        });
+        return await this.movieRepository.createMovies(request);
     }
     async getMoviesById(id) {
         return await this.movieRepository.findById({ id });
     }
     async deleteMovies(id) {
-        await this.prisma.movie.delete({
-            where: { id },
-        });
+        return await this.movieRepository.deleteMovies(id);
     }
     async updateMoviesStatus(request) {
         const movies = await this.getMoviesById(request.id);
         if (!movies) {
             throw new common_1.NotFoundException("영화가 존재하지 않습니다");
         }
-        return await this.prisma.movie.update({
-            where: { id: request.id },
-            data: {
-                title: request.title,
-                description: request.description,
-                status: request.status,
-            },
-        });
+        return await this.movieRepository.updateMovies(request);
     }
 };
 exports.MoviesService = MoviesService;
 exports.MoviesService = MoviesService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [movies_repository_1.MovieRepository,
-        prisma_service_1.PrismaService])
+    __metadata("design:paramtypes", [movies_repository_1.MovieRepository])
 ], MoviesService);
 //# sourceMappingURL=movies.service.js.map

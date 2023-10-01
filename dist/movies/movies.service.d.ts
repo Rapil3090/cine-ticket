@@ -1,11 +1,9 @@
 import { MovieRepository } from "./movies.repository";
-import { PrismaService } from "src/prisma/prisma.service";
 import { CreateMovieRequest } from "./dto/create-movie.request";
 import { UpdateMovieRequest } from "./dto/update-movie.request";
 export declare class MoviesService {
     private readonly movieRepository;
-    private readonly prisma;
-    constructor(movieRepository: MovieRepository, prisma: PrismaService);
+    constructor(movieRepository: MovieRepository);
     getMovies(): Promise<{
         id: number;
         title: string;

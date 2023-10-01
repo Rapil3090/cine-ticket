@@ -26,6 +26,30 @@ let MovieRepository = class MovieRepository {
             },
         });
     }
+    async createMovies(request) {
+        return await this.prisma.movie.create({
+            data: {
+                title: request.title,
+                description: request.description,
+                status: request.status,
+            },
+        });
+    }
+    async deleteMovies(id) {
+        await this.prisma.movie.delete({
+            where: { id },
+        });
+    }
+    async updateMovies(request) {
+        return await this.prisma.movie.update({
+            where: { id: request.id },
+            data: {
+                title: request.title,
+                description: request.description,
+                status: request.status
+            }
+        });
+    }
 };
 exports.MovieRepository = MovieRepository;
 exports.MovieRepository = MovieRepository = __decorate([

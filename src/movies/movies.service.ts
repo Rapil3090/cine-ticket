@@ -10,7 +10,6 @@ import { UpdateMovieRequest } from "./dto/update-movie.request";
 export class MoviesService {
   constructor(
     private readonly movieRepository: MovieRepository,
-    private readonly prisma: PrismaService
   ) {}
 
   async getMovies() {
@@ -18,13 +17,7 @@ export class MoviesService {
   }
 
   async createMovies(request: CreateMovieRequest) {
-    return await this.prisma.movie.create({
-      data: {
-        title: request.title,
-        description: request.description,
-        status: request.status,
-      },
-    });
+    return await this.movieRepository.createMovies(request);
   }
 
   async getMoviesById(id: number) {
@@ -32,9 +25,8 @@ export class MoviesService {
   }
 
   async deleteMovies(id: number): Promise<void> {
-    await this.prisma.movie.delete({
-      where: { id },
-    });
+    
+    return await this.movieRepository.deleteMovies(id);
   }
 
   async updateMoviesStatus(request: UpdateMovieRequest) {
@@ -44,13 +36,7 @@ export class MoviesService {
       throw new NotFoundException("영화가 존재하지 않습니다");
     }
 
-    return await this.prisma.movie.update({
-      where: { id: request.id },
-      data: {
-        title: request.title,
-        description: request.description,
-        status: request.status,
-      },
-    });
+    return await this.movieRepository.updateMovies(request);
+    
   }
 }

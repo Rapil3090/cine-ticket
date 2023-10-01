@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateMovieRequest = void 0;
 const class_validator_1 = require("class-validator");
+const status_1 = require("../entity/status");
 class CreateMovieRequest {
 }
 exports.CreateMovieRequest = CreateMovieRequest;
@@ -25,7 +26,7 @@ __decorate([
     __metadata("design:type", String)
 ], CreateMovieRequest.prototype, "description", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsEnum)(status_1.Status),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateMovieRequest.prototype, "status", void 0);
