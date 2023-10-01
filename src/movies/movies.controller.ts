@@ -41,7 +41,6 @@ import { UpdateMovieRequest } from "./dto/update-movie.request";
   
     @Delete(":id")
     async deleteMovies(@Param("id") id: string): Promise<void> {
-      // const request = {id};
       const numberId = parseInt(id, 10);
       await this.moviesService.deleteMovies(numberId);
     }
