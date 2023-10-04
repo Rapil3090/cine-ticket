@@ -44,7 +44,7 @@
 ### Tools
  - Visual Studio Code
 
-<img src="https://img.shields.io/badge/NestJs-E0234E?style=for-the-badge&logo=nestjs&logoColor=white">
+
 
 
 
