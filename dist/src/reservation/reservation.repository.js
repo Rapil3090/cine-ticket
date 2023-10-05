@@ -24,6 +24,10 @@ let ReservationRepository = class ReservationRepository {
             where: {
                 id: request.id,
             },
+            include: {
+                user: true,
+                movie: true,
+            },
         });
     }
     async createReservation(request) {

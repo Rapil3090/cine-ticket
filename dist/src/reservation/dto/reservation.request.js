@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateReservationRequest = exports.CreateReservationRequest = exports.GetReservationRequest = void 0;
+exports.ReservationResponse = exports.UpdateReservationRequest = exports.CreateReservationRequest = exports.GetReservationRequest = void 0;
 const class_validator_1 = require("class-validator");
 class GetReservationRequest {
 }
@@ -50,4 +50,22 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
 ], UpdateReservationRequest.prototype, "movieId", void 0);
+class ReservationResponse {
+}
+exports.ReservationResponse = ReservationResponse;
+__decorate([
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", Number)
+], ReservationResponse.prototype, "id", void 0);
+__decorate([
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", Object)
+], ReservationResponse.prototype, "user", void 0);
+__decorate([
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", Object)
+], ReservationResponse.prototype, "movie", void 0);
 //# sourceMappingURL=reservation.request.js.map

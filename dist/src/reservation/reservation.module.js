@@ -12,14 +12,18 @@ const reservation_service_1 = require("./reservation.service");
 const prisma_module_1 = require("../prisma/prisma.module");
 const reservation_controller_1 = require("./reservation.controller");
 const reservation_repository_1 = require("./reservation.repository");
+const user_module_1 = require("../user/user.module");
+const user_repository_1 = require("../user/user.repository");
+const movies_module_1 = require("../movies/movies.module");
+const movies_repository_1 = require("../movies/movies.repository");
 let ReservationModule = class ReservationModule {
 };
 exports.ReservationModule = ReservationModule;
 exports.ReservationModule = ReservationModule = __decorate([
     (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule],
+        imports: [prisma_module_1.PrismaModule, user_module_1.UserModule, movies_module_1.MoviesModule],
         controllers: [reservation_controller_1.ReservationController],
-        providers: [prisma_module_1.PrismaModule, reservation_service_1.ReservationService, reservation_repository_1.ReservationRepository]
+        providers: [prisma_module_1.PrismaModule, reservation_service_1.ReservationService, reservation_repository_1.ReservationRepository, user_repository_1.UserRepository, movies_repository_1.MovieRepository]
     })
 ], ReservationModule);
 //# sourceMappingURL=reservation.module.js.map

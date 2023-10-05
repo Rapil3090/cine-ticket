@@ -27,9 +27,7 @@ let ReservationController = class ReservationController {
         return this.reservationservice.getReservation();
     }
     async getReservationById(id) {
-        const reservationId = parseInt(id, 10);
-        const request = { id: reservationId };
-        return await this.reservationservice.getReservationById(reservationId);
+        return await this.reservationservice.getReservationById(parseInt(id));
     }
     async deleteReservationById(id) {
         const reservationId = parseInt(id, 10);

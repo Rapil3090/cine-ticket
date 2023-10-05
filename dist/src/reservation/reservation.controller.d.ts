@@ -16,6 +16,19 @@ export declare class ReservationController {
         reservationDate: Date;
     }[]>;
     getReservationById(id: string): Promise<{
+        user: {
+            id: number;
+            name: string;
+            email: string;
+            password: string;
+        };
+        movie: {
+            id: number;
+            title: string;
+            description: string;
+            status: string;
+        };
+    } & {
         id: number;
         userId: number;
         movieId: number;

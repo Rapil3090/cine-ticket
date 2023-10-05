@@ -19,10 +19,10 @@ let MovieRepository = class MovieRepository {
     async findAllMovies() {
         return this.prisma.movie.findMany({});
     }
-    async findById(id) {
+    async findById(request) {
         return this.prisma.movie.findUnique({
             where: {
-                id: id,
+                id: request.id,
             },
         });
     }

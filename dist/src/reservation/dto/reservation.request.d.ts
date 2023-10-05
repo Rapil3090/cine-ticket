@@ -12,3 +12,16 @@ export declare class UpdateReservationRequest {
     movieId: number;
     reservationDate: Date;
 }
+export declare class ReservationResponse {
+    id: number;
+    user: {
+        id: number;
+        name: string;
+        email: string;
+    };
+    movie: {
+        id: number;
+        title: string;
+        description: string;
+    };
+}
