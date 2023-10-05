@@ -16,13 +16,29 @@ export class ReservationRepository {
             where: {
                 id: request.id,
             },
-            include: {
-                user: true,
-                movie: true,
-            },
-        });
+            select: {
+                id: true,
+                reservationDate: true,
+                user: {
+                    select: {
+                        id: true,
+                        name: true,
+                        email: true,
+                    },
+                },
+                movie: {
+                    select: {
+                        id: true,
+                        title: true,
+                        description: true,
+                        status: true,
+                    }
+                }
+            }
+          
+        })}
 
-    }
+    
 
     async createReservation(request: CreateReservationRequest) {
         
