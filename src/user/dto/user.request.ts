@@ -35,3 +35,21 @@ export class UpdateUsersRequest {
     @IsString()
     password: string;
 }
+
+export class UserResponseDto {
+
+    @IsNumber()
+    id: number;
+
+    @IsString()
+    name: string;
+
+    @IsString()
+    email: string;
+
+    constructor(id: number, name: string, email: string) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+}

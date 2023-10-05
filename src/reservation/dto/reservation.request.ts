@@ -1,3 +1,6 @@
+import { MovieResponseDto } from "@/src/movies/dto/movie.dto";
+import { UserResponseDto } from "@/src/user/dto/user.request";
+import { Type } from "class-transformer";
 import { IsNotEmpty, IsNumber } from "class-validator";
 
 export class GetReservationRequest {
@@ -39,26 +42,23 @@ export class UpdateReservationRequest {
     reservationDate: Date;
 }
 
-export class ReservationResponse {
 
-    @IsNumber()
-    @IsNotEmpty()
+export class ReservationResponseDto {
+
     id: number;
 
-    @IsNumber()
-    @IsNotEmpty()
-    user: {
-        id: number;
-        name: string;
-        email: string;
-    }
+    reservationDate: Date;    
 
-    @IsNumber()
-    @IsNotEmpty()
-    movie: {
-        id: number;
-        title: string;
-        description: string;
-    }
+    @Type(() => UserResponseDto)
+    user: UserResponseDto;
 
+    @Type(() => MovieResponseDto)
+    movie: MovieResponseDto;
+
+    constructor(reservationId: any) {
+        this.id = reservationId.id;
+        this.user = new UserResponseDto(reservationId.user.id, reservationId.user.name, reservationId.user.email);
+        this.movie = new MovieResponseDto(reservationId.movie.id, reservationId.movie.title, reservationId.movie.description, reservationId.movie.status );
+        this.reservationDate = reservationId.reservationDate;
+    }
 }
