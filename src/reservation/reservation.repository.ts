@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
-import { CreateReservationRequest, UpdateReservationRequest } from "./dto/reservation.request";
+import { CreateReservationRequest, GetReservationRequest, UpdateReservationRequest } from "./dto/reservation.request";
 
 @Injectable()
 export class ReservationRepository {
@@ -11,17 +11,17 @@ export class ReservationRepository {
         return this.prisma.reservation.findMany({});
     }
 
-    async findByReservationId(request: number) {
+    async findByReservationId(request: GetReservationRequest) {
         return await this.prisma.reservation.findUnique({
             where: {
-                id: request,
+                id: request.id,
             },
             include: {
                 user: true,
                 movie: true,
             },
         });
-        
+
     }
 
     async createReservation(request: CreateReservationRequest) {
