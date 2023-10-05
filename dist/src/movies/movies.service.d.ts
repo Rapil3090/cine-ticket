@@ -1,6 +1,5 @@
 import { MovieRepository } from "./movies.repository";
-import { CreateMovieRequest } from "./dto/create-movie.request";
-import { UpdateMovieRequest } from "./dto/update-movie.request";
+import { CreateMovieRequest, UpdateMovieRequest } from "./dto/movie.dto";
 export declare class MoviesService {
     private readonly movieRepository;
     constructor(movieRepository: MovieRepository);

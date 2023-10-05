@@ -1,7 +1,5 @@
 import { PrismaService } from "src/prisma/prisma.service";
-import { GetMovieRequest } from "./dto/get-movie.request";
-import { CreateMovieRequest } from "./dto/create-movie.request";
-import { UpdateMovieRequest } from "./dto/update-movie.request";
+import { CreateMovieRequest, UpdateMovieRequest } from "./dto/movie.dto";
 export declare class MovieRepository {
     private readonly prisma;
     constructor(prisma: PrismaService);
@@ -11,7 +9,7 @@ export declare class MovieRepository {
         description: string;
         status: string;
     }[]>;
-    findById(request: GetMovieRequest): Promise<{
+    findById(id: number): Promise<{
         id: number;
         title: string;
         description: string;

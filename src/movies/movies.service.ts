@@ -1,8 +1,9 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { MovieRepository } from "./movies.repository";
 import { PrismaService } from "src/prisma/prisma.service";
-import { CreateMovieRequest } from "./dto/create-movie.request";
-import { UpdateMovieRequest } from "./dto/update-movie.request";
+import { CreateMovieRequest, UpdateMovieRequest } from "./dto/movie.dto";
+
+
 
 
 
@@ -21,7 +22,7 @@ export class MoviesService {
   }
 
   async getMoviesById(id: number) {
-    return await this.movieRepository.findById({ id });
+    return await this.movieRepository.findById( {id} );
   }
 
   async deleteMovies(id: number): Promise<void> {

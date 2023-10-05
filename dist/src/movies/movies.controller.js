@@ -15,8 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MoviesController = void 0;
 const common_1 = require("@nestjs/common");
 const movies_service_1 = require("./movies.service");
-const create_movie_request_1 = require("./dto/create-movie.request");
-const update_movie_request_1 = require("./dto/update-movie.request");
+const movie_dto_1 = require("./dto/movie.dto");
 let MoviesController = class MoviesController {
     constructor(moviesService) {
         this.moviesService = moviesService;
@@ -52,7 +51,7 @@ __decorate([
     (0, common_1.UsePipes)(common_1.ValidationPipe),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_movie_request_1.CreateMovieRequest]),
+    __metadata("design:paramtypes", [movie_dto_1.CreateMovieRequest]),
     __metadata("design:returntype", void 0)
 ], MoviesController.prototype, "createMovies", null);
 __decorate([
@@ -73,7 +72,7 @@ __decorate([
     (0, common_1.Patch)("/update"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [update_movie_request_1.UpdateMovieRequest]),
+    __metadata("design:paramtypes", [movie_dto_1.UpdateMovieRequest]),
     __metadata("design:returntype", void 0)
 ], MoviesController.prototype, "updateMoviesStatus", null);
 exports.MoviesController = MoviesController = __decorate([

@@ -10,9 +10,8 @@ import {
     ValidationPipe,
   } from "@nestjs/common";
   import { MoviesService } from "./movies.service";
-import { CreateMovieRequest } from "./dto/create-movie.request";
-import { GetMovieRequest } from "./dto/get-movie.request";
-import { UpdateMovieRequest } from "./dto/update-movie.request";
+import { CreateMovieRequest, GetMovieRequest, UpdateMovieRequest } from "./dto/movie.dto";
+
 
 
 

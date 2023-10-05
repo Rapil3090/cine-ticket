@@ -1,6 +1,5 @@
 import { MoviesService } from "./movies.service";
-import { CreateMovieRequest } from "./dto/create-movie.request";
-import { UpdateMovieRequest } from "./dto/update-movie.request";
+import { CreateMovieRequest, UpdateMovieRequest } from "./dto/movie.dto";
 export declare class MoviesController {
     private moviesService;
     constructor(moviesService: MoviesService);

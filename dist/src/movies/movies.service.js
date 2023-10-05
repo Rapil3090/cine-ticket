@@ -23,7 +23,7 @@ let MoviesService = class MoviesService {
         return await this.movieRepository.createMovies(request);
     }
     async getMoviesById(id) {
-        return await this.movieRepository.findById({ id });
+        return await this.movieRepository.findById(id);
     }
     async deleteMovies(id) {
         return await this.movieRepository.deleteMovies(id);
