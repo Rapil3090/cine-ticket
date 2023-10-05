@@ -38,3 +38,27 @@ export class UpdateReservationRequest {
 
     reservationDate: Date;
 }
+
+export class ReservationResponse {
+
+    @IsNumber()
+    @IsNotEmpty()
+    id: number;
+
+    @IsNumber()
+    @IsNotEmpty()
+    user: {
+        id: number;
+        name: string;
+        email: string;
+    }
+
+    @IsNumber()
+    @IsNotEmpty()
+    movie: {
+        id: number;
+        title: string;
+        description: string;
+    }
+
+}
