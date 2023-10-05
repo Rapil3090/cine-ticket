@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ReservationService } from './reservation.service';
-import { CreateReservationRequest, GetReservationRequest, UpdateReservationRequest } from './dto/reservation.request';
+import { CreateReservationRequest, UpdateReservationRequest } from './dto/reservation.request';
 
 @Controller('reservation')
 export class ReservationController {
@@ -19,9 +19,7 @@ export class ReservationController {
 
     @Get(":id")
     async getReservationById(@Param("id") id: string) {
-        const reservationId = parseInt(id, 10);
-        const request: GetReservationRequest = { id: reservationId };
-        return await this.reservationservice.getReservationById(reservationId);
+        return await this.reservationservice.getReservationById(parseInt(id));
     }
 
     @Delete(":id")
