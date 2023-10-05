@@ -45,9 +45,20 @@ describe('ReservationService', () => {
 
       const expectedReservation = {
         id: 1,
-        userId: 2,
-        movieId: 3,
+        userId: 4,
+        movieId: 4,
         reservationDate: new Date(),
+        user: {
+          id: 1,
+          name: 'tester',
+          email: 'tseter@gmai.com',
+        },
+        movie: {
+          id: 1,
+          title: '영화 제목',
+          description: '영화 소개',
+          status: "public"
+        },
       };
 
       jest.spyOn(repository, 'findByReservationId').mockResolvedValue(expectedReservation);

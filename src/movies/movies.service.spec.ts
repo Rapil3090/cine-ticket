@@ -1,10 +1,8 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { MovieRepository } from "./movies.repository";
 import { MoviesService } from "./movies.service"
-import exp from "constants";
-import { CreateMovieRequest } from "./dto/create-movie.request";
 import { Status } from "./entity/status";
-import { UpdateMovieRequest } from "./dto/update-movie.request";
+import { CreateMovieRequest, UpdateMovieRequest } from "./dto/movie.dto";
 
 describe('MoviesService', () => {
     let service: MoviesService;
